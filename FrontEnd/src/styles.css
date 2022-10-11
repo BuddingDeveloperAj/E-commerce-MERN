@@ -1,0 +1,55 @@
+.btn,
+.jumbotron:hover {
+  border-radius: 10px;
+}
+
+body {
+  background: rgb(255, 242, 242);
+  /* background-image: url("https://www.transparenttextures.com/patterns/food.png"); */
+}
+
+.form-group{
+  margin : 5px 0;
+}
+
+
+.main {
+  color: #001519;
+
+}
+
+.mystyle{
+  margin: auto;
+    width: 30%;
+    text-align: center;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li.nav-item:hover {
+  background-color: #31b700;
+}
+
+li {
+  margin: 1px;
+}
+
+.customcard {
+  background-color: rgb(41, 41, 41);
+  border-radius: 1%;
+  padding: 0%;
+}
+
+.card-body {
+  padding: 3px 3px 10px 3px;
+}
+
+.customcard:hover h5{
+  color: rgb(107, 251, 24)
+}
+
+.custom-ad-bg {
+  background-color: #ff9e00;
+}
