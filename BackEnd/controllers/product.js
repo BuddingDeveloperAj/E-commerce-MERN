@@ -157,11 +157,12 @@ exports.getAllProducts = (req, res) => {
     })
 }
 
-exports.updateStock = (req, res) => {
+exports.updateStock = (req, res, next) => {
 
     let myOperations = req.body.order.products.map(prod => {
+        console.log(prod.count)
         return {
-            UpdateOne : {
+            updateOne : {
                 filter : {_id : prod._id},
                 update : {$inc : {stock : -prod.count, sold: +prod.count}}
             }
