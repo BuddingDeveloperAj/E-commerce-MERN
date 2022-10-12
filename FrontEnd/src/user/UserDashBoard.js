@@ -3,8 +3,8 @@ import Base from "../core/Base"
 
 function UserDashBoard() {
   return (
-    <Base title='UserDashBoard page'>
-        <h1>This is UserDashBoard page</h1>
+    <Base title='UserDashBoard page' descrption='Manage your account here!'>
+        
     </Base>
   )
 }

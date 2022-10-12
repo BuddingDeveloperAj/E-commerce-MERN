@@ -4,16 +4,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping, faBoltLightning, faCircleXmark} from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router-dom';
 import { addItemtoCart, removeItemfromCart } from './CartHelper';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Card = ({
   product,
   AddtoCart = true,
   removeFromCart = false,
   setReload,
-  reload=undefined
+  reload=undefined,
+  func
 }) => {
 
+  const Message = () => toast("Item added to cart!");
   const [redirect, setRedirect] = useState(false);
   const Navigate = useNavigate();
 
@@ -34,20 +37,22 @@ const Card = ({
   
   const addToCart = () => {
    addItemtoCart(product, () => setRedirect(true))
+   func()
   }
 
   useEffect(()=>{
     if (redirect) {
       return Navigate("/cart")
     }
-  })
+  }, [])
 
   const ShowRemoveFromCart = (removeFromCart) => {
     return (removeFromCart && (
       <div className="d-grid gap-2">
         <button
-          onClick={(props) => {
+          onClick={() => {
             removeItemfromCart(product._id)
+            console.log("removed")
             setReload(!reload)
             }}
           className="btn btn-block btn-warning mt-1"
@@ -62,6 +67,7 @@ const Card = ({
     return (AddtoCart && (
 
       <div className="d-grid gap-2">
+      
         <button
           onClick={() => { }}
           className="btn btn-warning mt-1"
@@ -77,6 +83,7 @@ const Card = ({
     <div className="card mb-4 customcard" style={{ maxHeight: "480px" }}>
       <div className="card-body">
         <ImageHelper product={product} />
+        <ToastContainer />
         <h5 className="card-header cutsomtitle" style={{fontSize: "110%", display:"flex"}}>{product.name}</h5>
         
         <p className="lead px-3" style={{fontSize: "90%", maxHeight:"10px"}}>
@@ -86,7 +93,6 @@ const Card = ({
         
         {showAddtoCart(AddtoCart)}
         {ShowRemoveFromCart(removeFromCart)}
-
         {ShowBuyNow()}
 
       </div>

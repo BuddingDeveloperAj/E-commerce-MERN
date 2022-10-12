@@ -53,3 +53,19 @@ li {
 .custom-ad-bg {
   background-color: #ff9e00;
 }
+
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%; 
+}
+
+.main-page{
+  position: relative;
+  min-height: 100vh;
+}
+
+.content-wrap {
+  padding-bottom: 2.5rem;    /* Footer height */
+}

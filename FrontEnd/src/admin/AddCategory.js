@@ -1,14 +1,18 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { isAuthenticated } from '../auth/helper'
 import Base from '../core/Base'
 import { CreateCateory } from './helper/adminapicall'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function AddCategory() {
+    const Navigate = useNavigate();
     const [name, setName] = useState("")
     const [error, setError] = useState(false)
     const [success, setSuccess] = useState(false)
-
+    const notify = () => toast("category created successfully", {autoClose: 3000});
     const {user, token} = isAuthenticated();
 
     const GoBack = () => (
@@ -41,14 +45,6 @@ function AddCategory() {
                 setName("")
             }
         })
-    }
-
-    function SuccessMessage(){
-        return (
-            <div className="mystyle mb-3 alert alert-success">
-                category created successfully
-            </div>
-        )
     }
 
     function ErrorMessage(){
@@ -85,7 +81,7 @@ function AddCategory() {
     >
         <div className="row ">
         {GoBack()}
-        {success && SuccessMessage()}
+        {success && notify() && setTimeout(()=> Navigate("/admin/dashboard"), 3000)}
         {error && ErrorMessage()}
             <div className="col-md-8 p-4 bg-dark text-white offset-md-2 rounded">
                 
@@ -93,6 +89,7 @@ function AddCategory() {
                 
             </div>
         </div>
+        <ToastContainer />
     </Base>
   )
 }

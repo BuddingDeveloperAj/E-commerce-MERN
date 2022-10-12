@@ -8,10 +8,10 @@ function Base({
     children
 }) {
   return (
-    <div>
+    <div className='main-page'>
     <Menu />
 
-        <div className='container-fluid'>
+        <div className='container-fluid main-page content-wrap'>
             <div className='mt-4 p-5 main text-center'>
                 <h2 className='display-3 fw-normal'>{title}</h2>
                 <h2 className='lead'>{descrption}</h2>
@@ -21,10 +21,6 @@ function Base({
             </div>
         </div>
         <footer className='footer mt-auto bg-dark'>
-            <div className='container-fluid footer-text text-info text-center py-3'>
-                <h4>If you got an questions, feel free to react out</h4>
-                <button className='btn btn-outline-warning btn-large rounded'>Contact Us</button>
-            </div>
             <div className='container text-center'>
                 <span className='text-muted'>
                     An amazing <span className="text-white">SHOPPING</span> Zone

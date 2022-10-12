@@ -4,7 +4,7 @@ export const addItemtoCart = (item, next) => {
         if (localStorage.getItem("cart")){
             cart = JSON.parse(localStorage.getItem("cart"))
         }
-        cart.push({...item})
+        cart.push({...item, count:1})
         localStorage.setItem("cart", JSON.stringify(cart))
         next();
     }
@@ -24,7 +24,11 @@ export const removeItemfromCart = (productId) => {
         if (localStorage.getItem("cart")){
             cart = JSON.parse(localStorage.getItem("cart"))
         }
-    cart = cart.filter((product) => product._id !== productId )
+    cart.map((prod, index)=> {
+        if (prod._id === productId){
+            cart.splice(index, 1)
+        }
+    })
     localStorage.setItem("cart", JSON.stringify(cart))
 }
 return cart;
@@ -33,6 +37,8 @@ return cart;
 export const EmptyCart = (next) => {
     if (typeof window !== "undefined"){
         localStorage.removeItem("cart")
+        let cart=[]
+        localStorage.setItem("cart", JSON.stringify(cart))
         next();
     }
 }
