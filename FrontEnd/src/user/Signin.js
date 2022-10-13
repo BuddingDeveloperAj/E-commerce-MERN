@@ -131,7 +131,6 @@ function Signin() {
     {ErrorMessage()}
     {SignInForm()}
     {/* {performRedirect()} */}
-    <p className='text-center text-white'>{JSON.stringify(values)}</p>
     </Base>
   )
 } 
