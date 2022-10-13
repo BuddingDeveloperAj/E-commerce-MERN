@@ -9,8 +9,8 @@ function Signin() {
   const Navigate = useNavigate();
 
   const [values, setValues] = useState({
-    email: "ajay@gmail.com",
-    password: "16031999",
+    email: "",
+    password: "",
     error: "",
     loading: false,
     didRedirect: false,
