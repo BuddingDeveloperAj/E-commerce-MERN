@@ -83,7 +83,6 @@ function Signup() {
     {SuccessMessage()}
     {ErrorMessage()}
     {SignupForm()}
-    <p className="text-white text-center">{JSON.stringify(values)}</p>
     </Base>
   )
 }
