@@ -1,12 +1,12 @@
-export const addItemtoCart = (item, next) => {
+export const addItemtoCart = (item) => {
     let cart = []
     if (typeof window !== "undefined"){
         if (localStorage.getItem("cart")){
             cart = JSON.parse(localStorage.getItem("cart"))
         }
         cart.push({...item, count:1})
+
         localStorage.setItem("cart", JSON.stringify(cart))
-        next();
     }
 }  
 
@@ -14,6 +14,10 @@ export const loadCart = () => {
     if (typeof window !== "undefined"){
         if (localStorage.getItem("cart")){
             return JSON.parse(localStorage.getItem("cart"))
+        }
+        else{
+            let cart = []
+            localStorage.setItem("cart", JSON.stringify(cart))
         }
     }
 }
@@ -24,11 +28,14 @@ export const removeItemfromCart = (productId) => {
         if (localStorage.getItem("cart")){
             cart = JSON.parse(localStorage.getItem("cart"))
         }
-    cart.map((prod, index)=> {
-        if (prod._id === productId){
-            cart.splice(index, 1)
-        }
-    })
+    
+        cart.map((product, i) => {
+            if (product._id === productId) {
+              cart.splice(i, 1);
+            }
+          });
+
+
     localStorage.setItem("cart", JSON.stringify(cart))
 }
 return cart;
@@ -42,5 +49,6 @@ export const EmptyCart = (next) => {
         next();
     }
 }
+
 
 
